@@ -54,7 +54,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.build_source.outputs.upload_url }}
-          asset_name: ./Solver-${{github.ref_name}}.deb
+          asset_name: Solver-${{github.ref_name}}.deb
           asset_path: ./solver_application/build/Solver-${{github.ref_name}}.deb
           asset_content_type: application/deb
 
@@ -63,6 +63,10 @@ jobs:
     needs: build_source
     steps:
       - uses: actions/checkout@v3
+
+      - name: Installing dependencies
+        run: |
+          dotnet tool install --global wix
 
       - name: Configure solver
         working-directory: solver_application/
@@ -80,7 +84,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.build_source.outputs.upload_url }}
-          asset_name: ./Solver-${{github.ref_name}}.msi
+          asset_name: Solver-${{github.ref_name}}.msi
           asset_path: ./solver_application/build/Solver-${{github.ref_name}}.msi
           asset_content_type: application/msi
 
@@ -106,6 +110,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.build_source.outputs.upload_url }}
-          asset_name: ./Solver-${{github.ref_name}}.dmg
+          asset_name: Solver-${{github.ref_name}}.dmg
           asset_path: ./solver_application/build/Solver-${{github.ref_name}}.dmg
           asset_content_type: application/dmg
