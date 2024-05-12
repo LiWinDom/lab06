@@ -14,12 +14,12 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Configure solver
-        working-directory: ./solver-application/
+        working-directory: solver_application/
         run: |
           cmake -S ./ -B ./build -DCPACK_PACKAGE_VERSION=${{github.ref_name}}
 
       - name: Build solver
-        working-directory: ./solver-application/build/
+        working-directory: solver_application/build/
         run: |
           make package_source
         
