@@ -60,7 +60,7 @@ jobs:
 
   build_windows:
     runs-on: windows-latest
-    needs: create_release
+    needs: build_source
     steps:
       - uses: actions/checkout@v3
 
@@ -86,7 +86,7 @@ jobs:
 
   build_macos:
     runs-on: macos-latest
-    needs: create_release
+    needs: build_source
     steps:
       - uses: actions/checkout@v3
 
