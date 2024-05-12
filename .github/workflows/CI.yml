@@ -64,19 +64,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Installing dependencies
-        run: |
-          dotnet tool install --global wix
-
       - name: Configure solver
-        working-directory: solver_application/
+      - working-directory: solver_application/
         run: |
           cmake -S ./ -B ./build -DCPACK_PACKAGE_VERSION=${{github.ref_name}}
 
       - name: Build solver
-        working-directory: solver_application/build/
+        working-directory: solver_application/
         run: |
-          cpack -C CPackConfig.cmake -G "WIX"
+          cmake --build ./build
 
       - name: Update release
         uses: actions/upload-release-asset@v1
@@ -84,9 +80,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.build_source.outputs.upload_url }}
-          asset_name: Solver-${{github.ref_name}}.msi
-          asset_path: ./solver_application/build/Solver-${{github.ref_name}}.msi
-          asset_content_type: application/msi
+          asset_name: Solver-${{github.ref_name}}.exe
+          asset_path: ./solver_application/build/solver.exe
+          asset_content_type: application/exe
 
   build_macos:
     runs-on: macos-latest
