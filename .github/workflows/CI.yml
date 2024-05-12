@@ -1,0 +1,31 @@
+name: Banking library
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  build_source:
+    runs-on: ubuntu-latest
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Configure solver
+        working-directory: ./solver-application/
+        run: |
+          cmake -S ./ -B ./build -DCPACK_PACKAGE_VERSION=${{github.ref_name}}
+
+      - name: Build solver
+        working-directory: ./solver-application/build/
+        run: |
+          make package_source
+        
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }}
