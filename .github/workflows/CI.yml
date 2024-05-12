@@ -53,7 +53,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ needs.create_release.outputs.upload_url }}
+          upload_url: ${{ needs.build_source.outputs.upload_url }}
           asset_name: ./Solver-${{github.ref_name}}.deb
           asset_path: ./solver_application/build/Solver-${{github.ref_name}}.deb
           asset_content_type: application/deb
@@ -72,14 +72,14 @@ jobs:
       - name: Build solver
         working-directory: solver_application/build/
         run: |
-          make package
+          cpack -C CPackConfig.cmake -G "WIX"
 
       - name: Update release
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ needs.create_release.outputs.upload_url }}
+          upload_url: ${{ needs.build_source.outputs.upload_url }}
           asset_name: ./Solver-${{github.ref_name}}.msi
           asset_path: ./solver_application/build/Solver-${{github.ref_name}}.msi
           asset_content_type: application/msi
@@ -105,7 +105,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ needs.create_release.outputs.upload_url }}
+          upload_url: ${{ needs.build_source.outputs.upload_url }}
           asset_name: ./Solver-${{github.ref_name}}.dmg
           asset_path: ./solver_application/build/Solver-${{github.ref_name}}.dmg
           asset_content_type: application/dmg
