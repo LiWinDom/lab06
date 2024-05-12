@@ -1,236 +1,202 @@
 ## Laboratory work VI
 
-Данная лабораторная работа посвещена изучению средств пакетирования на примере **CPack**
-
-```sh
-$ open https://cmake.org/Wiki/CMake:CPackPackageGenerators
+```shell
+$ git clone https://github.com/LiWinDom/lab06
+```
+```shell
+Cloning into 'lab06'...
+remote: Enumerating objects: 117, done.
+remote: Counting objects: 100% (37/37), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 117 (delta 35), reused 33 (delta 33), pack-reused 80
+Receiving objects: 100% (117/117), 1.33 MiB | 931.00 KiB/s, done.
+Resolving deltas: 100% (36/36), done.
 ```
 
-## Tasks
-
-- [ ] 1. Создать публичный репозиторий с названием **lab06** на сервисе **GitHub**
-- [ ] 2. Выполнить инструкцию учебного материала
-- [ ] 3. Ознакомиться со ссылками учебного материала
-- [ ] 4. Составить отчет и отправить ссылку личным сообщением в **Slack**
-
-## Tutorial
-
-```sh
-$ export GITHUB_USERNAME=<имя_пользователя>
-$ export GITHUB_EMAIL=<адрес_почтового_ящика>
-$ alias edit=<nano|vi|vim|subl>
-$ alias gsed=sed # for *-nix system
+```shell
+$ cp -r ./lab03-04/* ./lab06/
 ```
 
-```sh
-$ cd ${GITHUB_USERNAME}/workspace
-$ pushd .
-$ source scripts/activate
+```shell
+$ git add -A
 ```
 
-```sh
-$ git clone https://github.com/${GITHUB_USERNAME}/lab05 projects/lab06
-$ cd projects/lab06
-$ git remote remove origin
-$ git remote add origin https://github.com/${GITHUB_USERNAME}/lab06
+```shell
+$ git commit -m "Solver application"
+```
+```shell
+[master 6a02e88] Solver application
+  99 files changed, 7998 insertions(+)
+  create mode 100644 .cache/jb/UpdateWork.dat
+  create mode 100644 .cache/jb/version.txt
+  create mode 100644 CMakeLists.txt
+  create mode 100644 formatter_ex_lib/CMakeLists.txt
+  create mode 100644 formatter_ex_lib/formatter_ex.cpp
+  create mode 100644 formatter_ex_lib/formatter_ex.h
+  create mode 100644 formatter_lib/CMakeLists.txt
+  create mode 100644 formatter_lib/formatter.cpp
+  create mode 100644 formatter_lib/formatter.h
+  rewrite preview.png (86%)
+  create mode 100644 solver_application/CMakeLists.txt
+  create mode 100644 solver_application/build/CMakeCache.txt
+  create mode 100644 solver_application/build/CMakeFiles/3.28.3/CMakeCCompiler.cmake
+  create mode 100644 solver_application/build/CMakeFiles/3.28.3/CMakeCXXCompiler.cmake
+  create mode 100755 solver_application/build/CMakeFiles/3.28.3/CMakeDetermineCompilerABI_C.bin
+  create mode 100755 solver_application/build/CMakeFiles/3.28.3/CMakeDetermineCompilerABI_CXX.bin
+  create mode 100644 solver_application/build/CMakeFiles/3.28.3/CMakeSystem.cmake
+  create mode 100644 solver_application/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.c
+  create mode 100644 solver_application/build/CMakeFiles/3.28.3/CompilerIdC/CMakeCCompilerId.o
+  create mode 100644 solver_application/build/CMakeFiles/3.28.3/CompilerIdCXX/CMakeCXXCompilerId.cpp
+  create mode 100644 solver_application/build/CMakeFiles/3.28.3/CompilerIdCXX/CMakeCXXCompilerId.o
+  create mode 100644 solver_application/build/CMakeFiles/CMakeConfigureLog.yaml
+  create mode 100644 solver_application/build/CMakeFiles/CMakeDirectoryInformation.cmake
+  create mode 100644 solver_application/build/CMakeFiles/Makefile.cmake
+  create mode 100644 solver_application/build/CMakeFiles/Makefile2
+  create mode 100644 solver_application/build/CMakeFiles/TargetDirectories.txt
+  create mode 100644 solver_application/build/CMakeFiles/cmake.check_cache
+  create mode 100644 solver_application/build/CMakeFiles/progress.marks
+  create mode 100644 solver_application/build/CMakeFiles/solver.dir/DependInfo.cmake
+  create mode 100644 solver_application/build/CMakeFiles/solver.dir/build.make
+  create mode 100644 solver_application/build/CMakeFiles/solver.dir/cmake_clean.cmake
+  create mode 100644 solver_application/build/CMakeFiles/solver.dir/compiler_depend.make
+  create mode 100644 solver_application/build/CMakeFiles/solver.dir/compiler_depend.ts
+  create mode 100644 solver_application/build/CMakeFiles/solver.dir/depend.make
+  create mode 100644 solver_application/build/CMakeFiles/solver.dir/equation.cpp.o
+  create mode 100644 solver_application/build/CMakeFiles/solver.dir/equation.cpp.o.d
+  create mode 100644 solver_application/build/CMakeFiles/solver.dir/flags.make
+  create mode 100644 solver_application/build/CMakeFiles/solver.dir/link.txt
+  create mode 100644 solver_application/build/CMakeFiles/solver.dir/progress.make
+  create mode 100644 solver_application/build/CPackConfig.cmake
+  create mode 100644 solver_application/build/CPackSourceConfig.cmake
+  create mode 100644 solver_application/build/Makefile
+  create mode 100644 solver_application/build/cmake_install.cmake
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/CMakeFiles/CMakeDirectoryInformation.cmake
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/CMakeFiles/formatter_ex_lib.dir/DependInfo.cmake
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/CMakeFiles/formatter_ex_lib.dir/build.make
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/CMakeFiles/formatter_ex_lib.dir/cmake_clean.cmake
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/CMakeFiles/formatter_ex_lib.dir/cmake_clean_target.cmake
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/CMakeFiles/formatter_ex_lib.dir/compiler_depend.make
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/CMakeFiles/formatter_ex_lib.dir/compiler_depend.ts
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/CMakeFiles/formatter_ex_lib.dir/depend.make
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/CMakeFiles/formatter_ex_lib.dir/flags.make
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/CMakeFiles/formatter_ex_lib.dir/formatter_ex.cpp.o
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/CMakeFiles/formatter_ex_lib.dir/formatter_ex.cpp.o.d
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/CMakeFiles/formatter_ex_lib.dir/link.txt
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/CMakeFiles/formatter_ex_lib.dir/progress.make
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/CMakeFiles/progress.marks
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/Makefile
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/cmake_install.cmake
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/formatter_lib_dir/CMakeFiles/CMakeDirectoryInformation.cmake
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/formatter_lib_dir/CMakeFiles/formatter_lib.dir/DependInfo.cmake
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/formatter_lib_dir/CMakeFiles/formatter_lib.dir/build.make
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/formatter_lib_dir/CMakeFiles/formatter_lib.dir/cmake_clean.cmake
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/formatter_lib_dir/CMakeFiles/formatter_lib.dir/cmake_clean_target.cmake
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/formatter_lib_dir/CMakeFiles/formatter_lib.dir/compiler_depend.make
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/formatter_lib_dir/CMakeFiles/formatter_lib.dir/compiler_depend.ts
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/formatter_lib_dir/CMakeFiles/formatter_lib.dir/depend.make
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/formatter_lib_dir/CMakeFiles/formatter_lib.dir/flags.make
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/formatter_lib_dir/CMakeFiles/formatter_lib.dir/formatter.cpp.o
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/formatter_lib_dir/CMakeFiles/formatter_lib.dir/formatter.cpp.o.d
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/formatter_lib_dir/CMakeFiles/formatter_lib.dir/link.txt
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/formatter_lib_dir/CMakeFiles/formatter_lib.dir/progress.make
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/formatter_lib_dir/CMakeFiles/progress.marks
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/formatter_lib_dir/Makefile
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/formatter_lib_dir/cmake_install.cmake
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/formatter_lib_dir/libformatter_lib.a
+  create mode 100644 solver_application/build/formatter_ex_lib_dir/libformatter_ex_lib.a
+  create mode 100755 solver_application/build/solver
+  create mode 100644 solver_application/build/solver_lib_dir/CMakeFiles/CMakeDirectoryInformation.cmake
+  create mode 100644 solver_application/build/solver_lib_dir/CMakeFiles/progress.marks
+  create mode 100644 solver_application/build/solver_lib_dir/CMakeFiles/solver_lib.dir/DependInfo.cmake
+  create mode 100644 solver_application/build/solver_lib_dir/CMakeFiles/solver_lib.dir/build.make
+  create mode 100644 solver_application/build/solver_lib_dir/CMakeFiles/solver_lib.dir/cmake_clean.cmake
+  create mode 100644 solver_application/build/solver_lib_dir/CMakeFiles/solver_lib.dir/cmake_clean_target.cmake
+  create mode 100644 solver_application/build/solver_lib_dir/CMakeFiles/solver_lib.dir/compiler_depend.make
+  create mode 100644 solver_application/build/solver_lib_dir/CMakeFiles/solver_lib.dir/compiler_depend.ts
+  create mode 100644 solver_application/build/solver_lib_dir/CMakeFiles/solver_lib.dir/depend.make
+  create mode 100644 solver_application/build/solver_lib_dir/CMakeFiles/solver_lib.dir/flags.make
+  create mode 100644 solver_application/build/solver_lib_dir/CMakeFiles/solver_lib.dir/link.txt
+  create mode 100644 solver_application/build/solver_lib_dir/CMakeFiles/solver_lib.dir/progress.make
+  create mode 100644 solver_application/build/solver_lib_dir/CMakeFiles/solver_lib.dir/solver.cpp.o
+  create mode 100644 solver_application/build/solver_lib_dir/CMakeFiles/solver_lib.dir/solver.cpp.o.d
+  create mode 100644 solver_application/build/solver_lib_dir/Makefile
+  create mode 100644 solver_application/build/solver_lib_dir/cmake_install.cmake
+  create mode 100644 solver_application/build/solver_lib_dir/libsolver_lib.a
+  create mode 100644 solver_application/equation.cpp
+  create mode 100644 solver_lib/CMakeLists.txt
+  create mode 100644 solver_lib/solver.cpp
+  create mode 100644 solver_lib/solver.h
 ```
 
-```sh
-$ gsed -i '/project(print)/a\
-set(PRINT_VERSION_STRING "v\${PRINT_VERSION}")
-' CMakeLists.txt
-$ gsed -i '/project(print)/a\
-set(PRINT_VERSION\
-  \${PRINT_VERSION_MAJOR}.\${PRINT_VERSION_MINOR}.\${PRINT_VERSION_PATCH}.\${PRINT_VERSION_TWEAK})
-' CMakeLists.txt
-$ gsed -i '/project(print)/a\
-set(PRINT_VERSION_TWEAK 0)
-' CMakeLists.txt
-$ gsed -i '/project(print)/a\
-set(PRINT_VERSION_PATCH 0)
-' CMakeLists.txt
-$ gsed -i '/project(print)/a\
-set(PRINT_VERSION_MINOR 1)
-' CMakeLists.txt
-$ gsed -i '/project(print)/a\
-set(PRINT_VERSION_MAJOR 0)
-' CMakeLists.txt
-$ git diff
+```shell
+$ git push
+```
+```shell
+Enumerating objects: 122, done.
+Counting objects: 100% (122/122), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (109/109), done.
+Writing objects: 100% (120/120), 1.08 MiB | 2.02 MiB/s, done.
+Total 120 (delta 38), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (38/38), done.
+To https://github.com/LiWinDom/lab06
+11ef25d..6a02e88  master -> master
 ```
 
-```sh
-$ touch DESCRIPTION && edit DESCRIPTION
-$ touch ChangeLog.md
-$ export DATE="`LANG=en_US date +'%a %b %d %Y'`"
-$ cat > ChangeLog.md <<EOF
-* ${DATE} ${GITHUB_USERNAME} <${GITHUB_EMAIL}> 0.1.0.0
-- Initial RPM release
-EOF
+```shell
+$ cd ./lab06/solver_application/
 ```
 
-```sh
-$ cat > CPackConfig.cmake <<EOF
-include(InstallRequiredSystemLibraries)
-EOF
+```shell
+$ touch CPackConfig.cmake
 ```
 
-```sh
-$ cat >> CPackConfig.cmake <<EOF
-set(CPACK_PACKAGE_CONTACT ${GITHUB_EMAIL})
-set(CPACK_PACKAGE_VERSION_MAJOR \${PRINT_VERSION_MAJOR})
-set(CPACK_PACKAGE_VERSION_MINOR \${PRINT_VERSION_MINOR})
-set(CPACK_PACKAGE_VERSION_PATCH \${PRINT_VERSION_PATCH})
-set(CPACK_PACKAGE_VERSION_TWEAK \${PRINT_VERSION_TWEAK})
-set(CPACK_PACKAGE_VERSION \${PRINT_VERSION})
-set(CPACK_PACKAGE_DESCRIPTION_FILE \${CMAKE_CURRENT_SOURCE_DIR}/DESCRIPTION)
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "static C++ library for printing")
-EOF
+```shell
+$ cmake -S ./ -B ./build/
+```
+```shell
+-- The C compiler identification is AppleClang 15.0.0.15000309
+-- The CXX compiler identification is AppleClang 15.0.0.15000309
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /Library/Developer/CommandLineTools/usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (3.5s)
+-- Generating done (0.2s)
+-- Build files have been written to: /Users/LiWinDom/Documents/Code/timp/lab06/solver_application/build
 ```
 
-```sh
-$ cat >> CPackConfig.cmake <<EOF
-
-set(CPACK_RESOURCE_FILE_LICENSE \${CMAKE_CURRENT_SOURCE_DIR}/LICENSE)
-set(CPACK_RESOURCE_FILE_README \${CMAKE_CURRENT_SOURCE_DIR}/README.md)
-EOF
+```shell
+$  cd ./build/
 ```
 
-```sh
-$ cat >> CPackConfig.cmake <<EOF
-
-set(CPACK_RPM_PACKAGE_NAME "print-devel")
-set(CPACK_RPM_PACKAGE_LICENSE "MIT")
-set(CPACK_RPM_PACKAGE_GROUP "print")
-set(CPACK_RPM_CHANGELOG_FILE \${CMAKE_CURRENT_SOURCE_DIR}/ChangeLog.md)
-set(CPACK_RPM_PACKAGE_RELEASE 1)
-EOF
+```shell
+$ make package
 ```
-
-```sh
-$ cat >> CPackConfig.cmake <<EOF
-
-set(CPACK_DEBIAN_PACKAGE_NAME "libprint-dev")
-set(CPACK_DEBIAN_PACKAGE_PREDEPENDS "cmake >= 3.0")
-set(CPACK_DEBIAN_PACKAGE_RELEASE 1)
-EOF
 ```
-
-```sh
-$ cat >> CPackConfig.cmake <<EOF
-
-include(CPack)
-EOF
-```
-
-```sh
-$ cat >> CMakeLists.txt <<EOF
-
-include(CPackConfig.cmake)
-EOF
-```
-
-```sh
-$ gsed -i 's/lab05/lab06/g' README.md
-```
-
-```sh
-$ git add .
-$ git commit -m"added cpack config"
-$ git tag v0.1.0.0
-$ git push origin master --tags
-```
-
-```sh
-$ travis login --auto
-$ travis enable
-```
-
-```sh
-$ cmake -H. -B_build
-$ cmake --build _build
-$ cd _build
-$ cpack -G "TGZ"
-$ cd ..
-```
-
-```sh
-$ cmake -H. -B_build -DCPACK_GENERATOR="TGZ"
-$ cmake --build _build --target package
-```
-
-```sh
-$ mkdir artifacts
-$ mv _build/*.tar.gz artifacts
-$ tree artifacts
-```
-
-## Report
-
-```sh
-$ popd
-$ export LAB_NUMBER=06
-$ git clone https://github.com/tp-labs/lab${LAB_NUMBER} tasks/lab${LAB_NUMBER}
-$ mkdir reports/lab${LAB_NUMBER}
-$ cp tasks/lab${LAB_NUMBER}/README.md reports/lab${LAB_NUMBER}/REPORT.md
-$ cd reports/lab${LAB_NUMBER}
-$ edit REPORT.md
-$ gist REPORT.md
-```
-
-## Homework
-
-После того, как вы настроили взаимодействие с системой непрерывной интеграции,</br>
-обеспечив автоматическую сборку и тестирование ваших изменений, стоит задуматься</br>
-о создание пакетов для измениний, которые помечаются тэгами (см. вкладку [releases](https://github.com/tp-labs/lab06/releases)).</br>
-Пакет должен содержать приложение _solver_ из [предыдущего задания](https://github.com/tp-labs/lab03#задание-1)
-Таким образом, каждый новый релиз будет состоять из следующих компонентов:
-- архивы с файлами исходного кода (`.tar.gz`, `.zip`)
-- пакеты с бинарным файлом _solver_ (`.deb`, `.rpm`, `.msi`, `.dmg`)
-
-В качестве подсказки:
-```sh
-$ cat .travis.yml
-os: osx
-script:
-...
-- cpack -G DragNDrop # dmg
-
-$ cat .travis.yml
-os: linux
-script:
-...
-- cpack -G DEB # deb
-
-$ cat .travis.yml
-os: linux
-addons:
-  apt:
-    packages:
-    - rpm
-script:
-...
-- cpack -G RPM # rpm
-
-$ cat appveyor.yml
-platform:
-- x86
-- x64
-build_script:
-...
-- cpack -G WIX # msi
-```
-
-Для этого нужно добавить ветвление в конфигурационные файлы для **CI** со следующей логикой:</br>
-если **commit** помечен тэгом, то необходимо собрать пакеты (`DEB, RPM, WIX, DragNDrop, ...`) </br>
-и разместить их на сервисе **GitHub**. (см. пример для [Travi CI](https://docs.travis-ci.com/user/deployment/releases))</br>
-
-## Links
-
-- [DMG](https://cmake.org/cmake/help/latest/module/CPackDMG.html)
-- [DEB](https://cmake.org/cmake/help/latest/module/CPackDeb.html)
-- [RPM](https://cmake.org/cmake/help/latest/module/CPackRPM.html)
-- [NSIS](https://cmake.org/cmake/help/latest/module/CPackNSIS.html)
-
-```
-Copyright (c) 2015-2021 The ISC Authors
+[ 12%] Building CXX object solver_lib_dir/CMakeFiles/solver_lib.dir/solver.cpp.o
+[ 25%] Linking CXX static library libsolver_lib.a
+[ 25%] Built target solver_lib
+[ 37%] Building CXX object formatter_ex_lib_dir/formatter_lib_dir/CMakeFiles/formatter_lib.dir/formatter.cpp.o
+[ 50%] Linking CXX static library libformatter_lib.a
+[ 50%] Built target formatter_lib
+[ 62%] Building CXX object formatter_ex_lib_dir/CMakeFiles/formatter_ex_lib.dir/formatter_ex.cpp.o
+[ 75%] Linking CXX static library libformatter_ex_lib.a
+[ 75%] Built target formatter_ex_lib
+[ 87%] Building CXX object CMakeFiles/solver.dir/equation.cpp.o
+[100%] Linking CXX executable solver
+[100%] Built target solver
+Run CPack packaging tool...
+CPack: Create package using DragNDrop
+CPack: Install projects
+CPack: - Run preinstall target for: solver
+CPack: - Install project: solver []
+CPack: Create package
+CPack: - package: /Users/LiWinDom/Documents/Code/timp/lab06/solver_application/build/Solver-1.0.0-Darwin.dmg generated.
 ```

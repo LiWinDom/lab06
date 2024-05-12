@@ -12,3 +12,6 @@ add_executable(${PROJECT_NAME} equation.cpp)
 
 target_include_directories(${PROJECT_NAME} PUBLIC ../formatter_ex_lib ../solver_lib)
 target_link_libraries(${PROJECT_NAME} formatter_ex_lib solver_lib)
+
+install(TARGETS ${PROJECT_NAME} DESTINATION ./Solver)
+include(CPackConfig.cmake)
