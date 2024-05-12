@@ -49,14 +49,13 @@ jobs:
           make package
 
       - name: Update release
-        working-directory: solver_application/build/
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
           asset_name: ./Solver-${{github.ref_name}}.deb
-          asset_path: ./Solver-${{github.ref_name}}.deb
+          asset_path: ./solver_application/build/Solver-${{github.ref_name}}.deb
           asset_content_type: application/deb
 
   build_windows:
@@ -76,14 +75,13 @@ jobs:
           make package
 
       - name: Update release
-        working-directory: solver_application/build/
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
           asset_name: ./Solver-${{github.ref_name}}.msi
-          asset_path: ./Solver-${{github.ref_name}}.msi
+          asset_path: ./solver_application/build/Solver-${{github.ref_name}}.msi
           asset_content_type: application/msi
 
   build_macos:
@@ -103,12 +101,11 @@ jobs:
           make package
 
       - name: Update release
-        working-directory: solver_application/build/
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
           asset_name: ./Solver-${{github.ref_name}}.dmg
-          asset_path: ./Solver-${{github.ref_name}}.dmg
+          asset_path: ./solver_application/build/Solver-${{github.ref_name}}.dmg
           asset_content_type: application/dmg
